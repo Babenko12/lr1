@@ -1,0 +1,83 @@
+
+/* styles.css — ЛР1 варіант 10 */
+:root{
+  --bg: #0b1220;
+  --card: #111a2b;
+  --accent: #4cc9f0;
+  --accent-2:#b5179e;
+  --text:#e6eefc;
+  --muted:#9bb3d3;
+  --border: #23324d;
+  --radius: 16px;
+}
+*{box-sizing: border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.wrapper{
+  max-width:1100px;
+  margin:24px auto;
+  padding:0 16px;
+}
+.site{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(80px, auto);
+  gap:12px;
+}
+
+/* Блоки за сіткою для варіанту 10
+  Ряд1: [1 1 1]
+  Ряд2: [X X X]
+  Ряд3: [2 2 2]
+  Ряд4: [3][4][5]
+  Ряд5: [6 6 6]
+  Ряд6: [. . 7]
+  Ряд7: [Y Y Y]
+*/
+.block{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding:16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  min-height:80px;
+}
+.h1{grid-column:1/-1}
+.x{grid-column:1/-1}
+.two{grid-column:1/-1}
+.row-345-3{grid-column:1}
+.row-345-4{grid-column:2}
+.row-345-5{grid-column:3}
+.six{grid-column:1/-1}
+.seven{grid-column:3}
+.y{grid-column:1/-1}
+
+h1,h2{margin:0 0 8px}
+h1{font-size:clamp(28px, 3.4vw, 40px)}
+h2{font-size:clamp(22px, 2.4vw, 28px);color:var(--muted)}
+p{margin:0 0 10px}
+.card-title{font-weight:700;letter-spacing:.02em}
+
+.menu{
+  display:flex;flex-direction:column;gap:8px;
+}
+.menu a{
+  display:block;
+  background:linear-gradient(90deg, rgba(76,201,240,.18), rgba(181,23,158,.18));
+  border:1px solid var(--border);
+  padding:10px 12px;border-radius:12px;
+}
+.menu a:focus{outline:2px dashed var(--accent);outline-offset:3px}
+
+.list-box ul, .list-box ol{margin:0 0 0 22px}
+
+figure{margin:0}
+figcaption{color:var(--muted);font-size:14px;margin-top:6px}
+
+/* Респонсивність */
+@media (max-width:740px){
+  .site{grid-template-columns: 1fr}
+  .row-345-3,.row-345-4,.row-345-5,.seven{grid-column:1/-1}
+}
